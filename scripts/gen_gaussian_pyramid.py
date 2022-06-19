@@ -7,7 +7,7 @@ import numpy as np
 from skimage import io
 
 sys.path.append('../src')
-from bilinear_inter_gray import bilinear_inter_gray
+#from bilinear_inter_gray import bilinear_inter_gray
 
 
 def bilinear_inter_gray(img, a, b):
@@ -33,9 +33,36 @@ def bilinear_inter_gray(img, a, b):
 
     return np.clip(out, 0, 255).astype(np.uint8)
 
+# def bilinear_interpolate(im, a, b):
+#     x = np.asarray(a)
+#     y = np.asarray(b)
+
+#     x0 = np.floor(x).astype(int)
+#     x1 = x0 + 1
+#     y0 = np.floor(y).astype(int)
+#     y1 = y0 + 1
+
+#     x0 = np.clip(x0, 0, im.shape[1]-1);
+#     x1 = np.clip(x1, 0, im.shape[1]-1);
+#     y0 = np.clip(y0, 0, im.shape[0]-1);
+#     y1 = np.clip(y1, 0, im.shape[0]-1);
+
+#     Ia = im[ y0, x0 ]
+#     Ib = im[ y1, x0 ]
+#     Ic = im[ y0, x1 ]
+#     Id = im[ y1, x1 ]
+
+#     wa = (x1-x) * (y1-y)
+#     wb = (x1-x) * (y-y0)
+#     wc = (x-x0) * (y1-y)
+#     wd = (x-x0) * (y-y0)
+
+#     return wa*Ia + wb*Ib + wc*Ic + wd*Id
+
 
 def main():
-    img_orig = io.imread('../images/zou_nantes_512x512.jpg')
+    img_orig = io.imread("C:/Users/deome/Desktop/CVAPR-project/saliency_map_generator-main/images/zou_nantes_512x512.jpg")
+    #img_orig = io.imread("../images/zou_nantes_512x512.jpg")
     img_gray = cv2.cvtColor(img_orig, cv2.COLOR_RGB2GRAY)
 
     pyramid = [img_gray]
