@@ -61,14 +61,15 @@ def bilinear_inter_gray(img, a, b):
 
 
 def main():
-    img_orig = io.imread("C:/Users/deome/Desktop/CVAPR-project/saliency_map_generator-main/images/zou_nantes_512x512.jpg")
+    img_orig = io.imread("C:/Users/pauli/PycharmProjects/ProjektCVAPR/images/dog.jpg")
+    #img_orig = io.imread("../images/dog.jpg")
     #img_orig = io.imread("../images/zou_nantes_512x512.jpg")
     img_gray = cv2.cvtColor(img_orig, cv2.COLOR_RGB2GRAY)
 
     pyramid = [img_gray]
 
     fig, ax = plt.subplots(1, 5, figsize=(10, 4))
-    for i in range(1, 6):
+    for i in range(1, 7):
         img_resized = bilinear_inter_gray(
             img_gray, a=1. / 2 ** i, b=1. / 2 ** i)
         pyramid.append(img_resized)
